@@ -27,7 +27,7 @@ class CocktailsController < ApplicationController
   end
 
   def show
-    @doses = Dose.where(id: params[:id])
+    @doses = Dose.where(cocktail_id: params[:id])
   end
 
   def destroy

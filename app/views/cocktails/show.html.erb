@@ -4,7 +4,7 @@
   <% @doses.each do |dose| %>
     <%= dose.description %> of
     <%= Ingredient.find(dose.ingredient_id).name %>
-    <%= link_to "delete", cocktail_dose_path, method: delete %>
+    <%= link_to "delete", dose_path(dose), method: :delete %>
   <% end %>
 </p>
-<p><%= link_to "back", cocktail_dose_path %></p>
+<p><%= link_to "back", root_path %></p>
