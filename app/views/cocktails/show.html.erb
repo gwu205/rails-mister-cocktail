@@ -1,5 +1,8 @@
 <div class="container">
   <h1><%= @cocktail.name %></h1>
+  <% if @cocktail.photo.present? %>
+  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
+  <% end %>
   <%= link_to "add dose", new_cocktail_dose_path(@cocktail) %>
   <p>
     <% @doses.each do |dose| %>
