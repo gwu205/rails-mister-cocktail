@@ -3,18 +3,23 @@
   <p>
     <%= link_to "Add cocktail", new_cocktail_path %>
   </p>
-  <div class="cocktails-wrapper">
+  <div class="cocktails-wrapper cf pa2">
     <%#= cl_image_tag("avamxvfwe6llscogx6nl", width: 400, height: 300, crop: :fill) %>
     <% @cocktails.each do |cocktail| %>
-      <% if cocktail.photo.present? %>
-      <div class="cocktail" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)),
-         url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>')">
-      <% else %>
-      <div class="cocktail" style=" background-image: url('http://placehold.jp/24/cccccc/ffffff/300x400.png?text=no image');">
-      <% end %>
-        <%#= cl_image_tag cocktail.photo, height: 150, width: 300, crop: :fill %>
-        <%= link_to cocktail.name, cocktail_path(cocktail) %>
+      <div class="fl w-third w-25-l pa2">
+      <%= link_to cocktail_path(cocktail), class: 'db link dim tc' do %>
+        <% if cocktail.photo.present? %>
+        <%= cl_image_tag cocktail.photo, class: "w-100 db outline black-10" %>
+        <% else %>
+        <img src="http://placehold.jp/24/cccccc/ffffff/300x400.png?text=no image" class="w-100 db outline black-10">
+        <% end %>
+
+        <dl class="mt2 f6 lh-copy">
+          <dt class="clip">Title</dt>
+          <dd class="ml0 black truncate w-100"><%= cocktail.name %></dd>
+        </dl>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>
