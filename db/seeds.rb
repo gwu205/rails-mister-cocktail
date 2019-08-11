@@ -17,7 +17,7 @@ ingredients.each { |ingredient| Ingredient.create(name: ingredient["strIngredien
 
 10.times do
   # photo = Cloudinary::Uploader.upload("https://source.unsplash.com/1600x900/?cocktail")
-  cocktail = Cocktail.new(name: Faker::Coffee.blend_name, photo: 'https://res.cloudinary.com/gswu205/image/upload/v1565338270/zlby7tqqb9pqlpirx7m5.jpg')
+  cocktail = Cocktail.new(name: Faker::Coffee.blend_name, remote_photo_url: 'https://res.cloudinary.com/gswu205/image/upload/v1565338270/zlby7tqqb9pqlpirx7m5.jpg')
   cocktail.save!
   5.times do
     Dose.create(description: rand(1..4), cocktail_id: cocktail.id, ingredient_id: Ingredient.all.sample.id)
