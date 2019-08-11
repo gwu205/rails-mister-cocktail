@@ -1,20 +1,21 @@
+<section class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+         url(<%= asset_path 'home-banner.jpg' %>);">
+  <h1>Lilac<br>Whiskey<br>Bar</h1>
+  <h2>Serving the best whiskey cocktails in Tokyo</h2>
+</section>
+
 <div class="container">
-<h1>Mr. Cocktail</h1>
-  <p>
-    <%= link_to "Add cocktail", new_cocktail_path %>
-  </p>
+  <h2 class="page-heading">
+    Cocktails List
+  </h2>
   <div class="cocktails-wrapper cf pa2">
     <%#= cl_image_tag("avamxvfwe6llscogx6nl", width: 400, height: 300, crop: :fill) %>
     <% @cocktails.each do |cocktail| %>
-      <div class="fl w-third w-25-l pa2">
-      <%= link_to cocktail_path(cocktail), class: 'db link dim tc' do %>
-        <% if cocktail.photo.present? %>
-        <%= cl_image_tag cocktail.photo, class: "w-100 db outline black-10" %>
-        <% else %>
-        <img src="http://placehold.jp/24/cccccc/ffffff/300x400.png?text=no image" class="w-100 db outline black-10">
-        <% end %>
+    <%= link_to cocktail_path(cocktail), class: 'db link dim tc' do %>
+      <div class="fl w-100-m w-50-l pa2 cocktail-card" style="background-image: linear-gradient(90deg, rgba(0,0,0,0.4), rgba(0,0,0,0)),
+         url('<%= cl_image_path cocktail.photo, height: 300, width: 400, crop: :fill %>');">
 
-        <dl class="mt2 f6 lh-copy">
+        <dl class="card-title mt2 f6 lh-copy">
           <dt class="clip">Title</dt>
           <dd class="ml0 black truncate w-100"><%= cocktail.name %></dd>
         </dl>

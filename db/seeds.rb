@@ -35,7 +35,7 @@ img = [
 
 6.times do
   photo = Cloudinary::Uploader.upload(img.shift)
-  cocktail = Cocktail.create!(name: cocktails.delete(cocktails.sample), remote_photo_url: photo["secure_url"])
+  cocktail = Cocktail.create!(name: cocktails.shift, remote_photo_url: photo["secure_url"])
   5.times do
     Dose.create(description: rand(1..4), cocktail_id: cocktail.id, ingredient_id: Ingredient.all.sample.id)
   end
