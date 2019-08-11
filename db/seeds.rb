@@ -50,8 +50,7 @@ cocktails = [
 
 10.times do |i|
   # photo = Cloudinary::Uploader.upload("https://source.unsplash.com/1600x900/?cocktail")
-  cocktail = Cocktail.new(name: cocktails.delete(cocktails.sample), remote_photo_url: `https://source.unsplash.com/1600x900/?cocktail/#{i}`)
-  cocktail.save!
+  cocktail = Cocktail.create!(name: cocktails.delete(cocktails.sample), remote_photo_url: `https://source.unsplash.com/1600x900/?cocktail/#{i}`)
   5.times do
     Dose.create(description: rand(1..4), cocktail_id: cocktail.id, ingredient_id: Ingredient.all.sample.id)
   end
