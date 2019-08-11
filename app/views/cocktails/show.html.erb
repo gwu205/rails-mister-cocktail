@@ -1,15 +1,32 @@
-<div class="container">
-  <h1><%= @cocktail.name %></h1>
-  <% if @cocktail.photo.present? %>
-  <%= cl_image_tag @cocktail.photo, height: 300, width: 400, crop: :fill %>
-  <% end %>
-  <%= link_to "add dose", new_cocktail_dose_path(@cocktail) %>
-  <p>
-    <% @doses.each do |dose| %>
-      <%= dose.description %> of
-      <%= Ingredient.find(dose.ingredient_id).name %>
-      <%= link_to "delete", dose_path(dose), method: :delete %>
+<section class="banner secondary" style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)),
+         url(<%= asset_path 'home-banner.jpg' %>);">
+</section>
+
+<div class="container secondary">
+  <div class="info-block">
+    <div class="info-block-content">
+    <%= link_to root_path do %>
+      <i class="fas fa-undo back-btn"></i>
     <% end %>
-  </p>
-  <p><%= link_to "back", root_path %></p>
+    <h1 class="page-heading"><%= @cocktail.name %></h1>
+      <% if @cocktail.photo.present? %>
+      <%= cl_image_tag @cocktail.photo, height: 300, width: 600, crop: :fill %>
+      <% end %>
+      <ul>
+      <li><%= link_to new_cocktail_dose_path(@cocktail) do %>
+        <i class="fas fa-plus-circle"></i> Add an ingredient
+        <% end %>
+      </li>
+        <% @doses.each do |dose| %>
+        <li>
+          <%= dose.description %> of
+          <%= Ingredient.find(dose.ingredient_id).name %>
+          <%= link_to dose_path(dose), method: :delete do %>
+            <i class="far fa-minus-square"></i>
+          <% end %>
+        </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>

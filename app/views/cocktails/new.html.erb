@@ -1,10 +1,18 @@
-<div class="container">
-  <h1>Add cocktail</h1>
+<div class="container tertiary">
+  <h1 class="page-heading">Add cocktail</h1>
+  <%= link_to root_path do %>
+    <i class="fas fa-undo back-btn"></i>
+  <% end %>
   <%= simple_form_for(@cocktail) do |f| %>
-    <%= f.input :name %>
+    <div class="mt4">
+    <%= f.input :name, input_html: { class: 'f6 b db mb2' } %>
+    </div>
+    <div class="mt4">
     <%= f.input :photo %>
     <%= f.input :photo_cache, as: :hidden %>
-    <%= f.button :submit %>
+    </div>
+    <div class="mt4">
+    <%= f.button :submit, class: "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" %>
+    </div>
   <% end %>
-  <p><%= link_to "back", root_path %></p>
 </div>

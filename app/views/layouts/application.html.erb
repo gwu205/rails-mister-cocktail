@@ -12,11 +12,14 @@
 
   <body>
     <nav class="nav">
-      <%= link_to "Add cocktail",new_cocktail_path %>
+      <%= link_to "Add a new cocktail",new_cocktail_path %>
     </nav>
     <%= yield %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application' %>
     <%#= javascript_pack_tag 'application' %>
+    <footer class="footer">
+      Made with ❤️ during Le Wagon Fullstack Coding Bootcamp
+    </footer>
   </body>
 </html>

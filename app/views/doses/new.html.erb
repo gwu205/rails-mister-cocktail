@@ -1,7 +1,17 @@
-<h1>Add a dose for <%= @cocktail.name %></h1>
-<%= simple_form_for [@cocktail, @dose] do |f| %>
-  <%= f.input :description %>
-  <%= f.association :ingredient %>
-  <%= f.button :submit %>
+<div class="container tertiary">
+<h1 class="page-heading">Add an ingredient for <%= @cocktail.name %></h1>
+<%= link_to root_path do %>
+  <i class="fas fa-undo back-btn"></i>
 <% end %>
-<p><%= link_to "back", cocktail_path(@cocktail) %></p>
+<%= simple_form_for [@cocktail, @dose] do |f| %>
+  <div class="mt4">
+  <%= f.input :description, input_html: { class: 'f6 b db mb2' } %>
+  </div>
+  <div class="mt4">
+  <%= f.association :ingredient %>
+  </div>
+  <div class="mt4">
+  <%= f.button :submit, class: "b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6" %>
+  </div>
+</div>
+<% end %>

@@ -1,9 +1,54 @@
 // Specific CSS for your home-page
+@keyframes kenburns {
+  0% {
+    background-size: 100%;
+    background-position: center center;
+  }
+  50% {
+    background-size: 125%;
+    background-position: center right;
+  }
+  100% {
+    background-size: 100%;
+    background-position: center center;
+  }
+}
+
 nav {
-  background: #222;
+  background: #111;
+  text-align: center;
+  padding: 5px 20px 10px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   a {
     text-align: center;
+  }
+}
+
+.container.tertiary {
+  min-height: calc(100vh - 40px);
+
+  a {
+    text-align: center;
+    display: block;
+  }
+
+  #new_cocktail, #new_dose {
+    & > div {
+      max-width: 400px;
+      margin: 0 auto;
+    }
+
+    input, select {
+      width: 100%;
+      display: block;
+    }
+
+    .btn {
+      margin-top: 40px;
+    }
   }
 }
 
@@ -16,6 +61,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: kenburns 60s infinite;
 
   h1 {
     font-size: 4rem;
@@ -38,10 +84,8 @@ nav {
 
 .page-heading {
   text-align: center;
-  font-weight: bold;
   margin: 40px auto;
-  border-bottom: 3px solid;
-  letter-spacing: -0.2rem;
+  letter-spacing: -0.1rem;
   color: #444;
   width: max-content;
 }
@@ -59,6 +103,7 @@ nav {
   background-repeat: no-repeat;
   background-position: center center;
   position: relative;
+  box-shadow: 0px 2px 4px rgba(0,0,0,0.3);
 
   .card-title {
     font-size: 1.2rem;
@@ -70,9 +115,19 @@ nav {
     left: 40px;
     text-transform: uppercase;
     letter-spacing: 0.1rem;
+    border-bottom: 1px solid;
 
     dd {
       color: white;
     }
   }
+}
+
+footer {
+  font-size: 0.7rem;
+  text-align: center;
+  background: #111;
+  margin-top: 30px;
+  padding: 10px 20px;
+  color: #ddd;
 }
