@@ -18,39 +18,24 @@ ingredients.each { |ingredient| Ingredient.create(name: ingredient["strIngredien
 cocktails = [
     'Amber Moon',
     'Blue Blazer',
-    'Black Nail',
-    'Bobby Burns',
-    'Boulevardier',
-    'Bourbon Lancer',
     'Brooklyn',
-    'Churchill',
-    'Farnell',
-    'Irish coffee IBA',
-    'Horsefeather',
     'Jack and Coke',
-    'Jungle Juice',
-    'Lynchburg Lemonade',
-    'Manhattan IBA',
-    'Mint Julep IBA',
-    'Missouri Mule',
-    'Nixon',
-    'Old Fashioned IBA',
-    'Rob Roy',
-    'Rusty Nail IBA',
-    'Sazerac IBA',
     'Scotch and soda',
-    'Seven and Seven or 7 & 7',
-    'Three Wise Men',
-    'Toronto',
-    'Ward 8',
-    'Whisky Mac',
-    'Whiskey smash',
-    'Whiskey sour IBA'
+    'Whisky Mac'
 ]
 
-10.times do |i|
-  # photo = Cloudinary::Uploader.upload("https://source.unsplash.com/1600x900/?cocktail")
-  cocktail = Cocktail.create!(name: cocktails.delete(cocktails.sample), remote_photo_url: `https://source.unsplash.com/1600x900/?cocktail/#{i}`)
+img = [
+    'https://images.unsplash.com/photo-1554420026-54be86d931f8?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1600',
+    'https://images.unsplash.com/photo-1554219962-f71d858fa121?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1600',
+    'https://images.unsplash.com/photo-1542518392-13317b1ee2a2?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1600',
+    'https://images.unsplash.com/photo-1455621481073-d5bc1c40e3cb?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1600',
+    'https://images.unsplash.com/photo-1455621481073-d5bc1c40e3cb?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1600',
+    'https://images.unsplash.com/photo-1564957468535-e8e51b0d2f56?crop=entropy&cs=tinysrgb&fit=crop&fm=jpg&h=900&ixid=eyJhcHBfaWQiOjF9&ixlib=rb-1.2.1&q=80&w=1600'
+]
+
+6.times do
+  photo = Cloudinary::Uploader.upload(img.shift)
+  cocktail = Cocktail.create!(name: cocktails.delete(cocktails.sample), remote_photo_url: photo["secure_url"])
   5.times do
     Dose.create(description: rand(1..4), cocktail_id: cocktail.id, ingredient_id: Ingredient.all.sample.id)
   end
